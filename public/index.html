@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OP'N RIJ ONLINE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="links/favi.png" type="image/png">
+</head>
+<body>
+
+    <div id="logoContainer">
+        <img src="links/Logo.png" alt="Game Logo" id="gameLogo">
+    </div>
+
+    <!-- Spelregel icoon in de rechterbovenhoek van de header -->
+    <div id="rulesIcon" class="header-icon">
+        <img src="links/help.png" alt="Spelregels" id="rulesIconImage">
+    </div>
+
+    <!-- Spelregel pop-up -->
+    <div id="rulesPopup" class="popup hidden">
+        <div class="popup-content">
+            <span id="closeRules" class="close-button">&times;</span>
+            <h2>Spelregels</h2>
+            <p>Het team met 4 op een rij, diagonaal, verticaal of horizontaal wint.</p>
+            <p>Maar let op, dit spel is niet 1 tegen 1.
+               Bij deze versie van 4 op een rij kunnen er oneindig veel spelers mee doen.
+               Je kiest een kleur en stemt tijdens jou beurt vervolgens op een rij, de meeste stemmen tellen.
+               Na 10 seconden wordt de zet gespeeld!
+            </p>
+            <br>
+            <p>Veel plezier!</p>
+        </div>
+    </div>
+
+    <!-- Teamselectie -->
+    <div id="teamSelection">
+        <button id="redTeam"></button>
+        <button id="yellowTeam"></button>
+    </div>
+
+    <!-- Spelcontainer -->
+    <div id="gameContainer" style="display:none;">
+        <h2 id="currentTeam"></h2>
+        <table id="gameBoard"></table>
+        <p id="votingInfo">Kies een rij om te stemmen!</p>
+
+        <!-- Nieuwe container voor timer en score, die naast elkaar staan -->
+        <div id="bottomBar">
+            <p id="scoreRed">
+                <img src="links/rood_win.png" alt="Rood icoon" class="score-icon"> 
+                <span id="scoreRedValue">0</span>
+            </p>
+            <p id="timer">
+                <img src="links/clock.png" alt="Klok icoon" class="timer-icon"> 
+                <span id="timerValue">10</span>
+            </p>
+            <p id="scoreYellow">
+                <img src="links/geel_win.png" alt="Geel icoon" class="score-icon"> 
+                <span id="scoreYellowValue">0</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Winnaar Bericht als banner -->
+    <div id="winnerMessage" class="winnerMessage"></div>
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

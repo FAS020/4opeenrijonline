@@ -1,0 +1,345 @@
+/* Algemene styling voor het hele lichaam */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #0a0a0a; /* Zachte achtergrondkleur */
+    color: #ffffff; /* Donkere tekstkleur voor goede leesbaarheid */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Zorgt ervoor dat de body het volledige scherm vult */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Voorkom scrollen */
+}
+
+/* Logo Container */
+#logoContainer {
+    margin-bottom: 80px; /* Ruimte tussen het logo en de teamselectie */
+}
+
+/* Styling voor het logo */
+#gameLogo {
+    width: 250px; /* Pas de breedte van het logo aan naar wens */
+    height: auto; /* Zorg ervoor dat de hoogte in verhouding blijft */
+    display: block; /* Zorg ervoor dat de afbeelding goed gepositioneerd wordt */
+    margin: 0 auto; /* Centreer het logo horizontaal */
+}
+
+/* Maak het logo verborgen wanneer het niet zichtbaar moet zijn */
+.hidden {
+    display: none;
+}
+
+/* Teamselectie-sectie */
+#teamSelection {
+    margin-top: 0px;
+    font-size: 20px;
+}
+
+/* Knoppen voor teamselectie, nu als cirkels */
+button {
+    font-size: 18px;
+    padding: 30px; /* Maak de knoppen groter om een cirkelvorm te krijgen */
+    margin: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%; /* Zorgt ervoor dat de knop een cirkel wordt */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100px; /* Brede knoppen voor een grotere cirkel */
+    height: 100px; /* Zorgt voor een gelijke hoogte en breedte voor de cirkelvorm */
+}
+
+/* Rode team button */
+#redTeam {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+#redTeam:hover {
+    background-color: #e20000;
+    transform: scale(1.1); /* Vergroot het icoon met 10% */
+
+}
+
+/* Gele team button */
+#yellowTeam {
+    background-color: #fff200;
+}
+
+#yellowTeam:hover {
+    background-color: #ffcc00;
+    transform: scale(1.1); /* Vergroot het icoon met 10% */
+
+}
+
+/* Spelcontainer */
+#gameContainer {
+    margin-top: 20px;
+    padding: 25px;
+    border: 0px solid #0a0a0a;
+    border-radius: 15px;
+    background-color: #0a0a0a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+/* Speelbord */
+#gameBoard {
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 8px;
+    table-layout: fixed;
+    width: 320px;
+    height: 320px;
+    background-color: #0a0a0a;
+    border-radius: 5px;
+}
+
+#gameBoard td {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: none; /* Verwijder animaties */
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Kolomselectie op basis van teamkleur */
+#gameBoard td.highlight-red {
+    outline: 3px solid #c20000; /* Rode rand */
+}
+
+#gameBoard td.highlight-yellow {
+    outline: 3px solid #ffcc00; /* Gele rand */
+}
+
+/* Hover zonder schaalvergroting */
+#gameBoard td:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Styling voor de rode en gele schijven */
+#gameBoard td.red {
+    background-color: #c20000;
+    border: none;
+}
+
+#gameBoard td.yellow {
+    background-color: #ffcc00;
+    border: none;
+}
+
+/* Timer en score secties met vaste breedte */
+#timer, #scoreRed, #scoreYellow {
+    font-size: 18px;
+    margin-top: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    gap: 8px;
+    min-width: 120px; /* Zorgt voor consistente breedte */
+}
+
+/* Zorg dat cijfers altijd gecentreerd zijn */
+#timer span,
+#scoreRed span,
+#scoreYellow span {
+    display: inline-block;
+    text-align: center;
+    min-width: 40px; /* Vaste ruimte voor cijfers */
+}
+
+/* Timer met klok-icoon */
+#timer img, .score-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Rode en gele score kleur */
+#scoreRed {
+    color: #ffffff;
+}
+
+#scoreYellow {
+    color: #ffffff;
+}
+
+/* Winnaarbericht als overlay in het midden van het scherm */
+#winnerMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.9); /* Zwart met 60% opaciteit */
+    padding: 20px 40px;
+    display: none; /* Standaard niet zichtbaar */
+    backdrop-filter: blur(8px); /* Blur de achtergrond */
+}
+
+/* Huidige team sectie */
+#currentTeam {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Dynamische kleur voor het huidige team */
+#currentTeam.red {
+    color: #ff0000; /* Rood voor team rood */
+}
+
+#currentTeam.yellow {
+    color: #fff200; /* Geel voor team geel */
+}
+
+/* Stem-informatie */
+#votingInfo {
+    font-size: 16px;
+    font-style: italic;
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+/* Nieuwe container voor de timer en scores */
+#bottomBar {
+    display: flex; /* Flexbox gebruikt om items naast elkaar te plaatsen */
+    justify-content: space-evenly; /* Verdeel de ruimte gelijk tussen de elementen */
+    align-items: center; /* Centreer ze verticaal */
+    width: 100%; /* Zorg ervoor dat het de volledige breedte gebruikt */
+    margin-top: 20px; /* Ruimte boven de bar */
+}
+
+/* Zorg dat cijfers altijd gecentreerd zijn */
+#timer span,
+#scoreRed span,
+#scoreYellow span {
+    display: inline-block;
+    text-align: center;
+    min-width: 40px; /* Vaste ruimte voor cijfers */
+}
+
+/* Styling voor timer en score-elementen */
+#timer, #scoreRed, #scoreYellow {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Klok en score-icoon styling */
+#timer img, .score-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Rode en gele score kleur */
+#scoreRed {
+    color: #ffffff;
+}
+
+#scoreYellow {
+    color: #ffffff;
+}
+
+/* Responsieve styling */
+@media (max-width: 600px) {
+    #gameBoard {
+        width: 80%;
+        height: auto;
+    }
+
+    #gameBoard td {
+        width: 40px;
+        height: 40px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    #timer, #scoreRed, #scoreYellow {
+        font-size: 16px;
+    }
+}
+
+/* Verplaats het spelregel icoon naar rechts in de header */
+#rulesIcon {
+    position: absolute; /* Maak het icoon absoluut gepositioneerd ten opzichte van de dichtstbijzijnde gepositioneerde ouder */
+    top: 10px;           /* Bepaal de afstand van de bovenkant van de header */
+    right: 10px;         /* Bepaal de afstand van de rechterkant van de header */
+}
+
+/* Verklein het spelregel icoon */
+#rulesIconImage {
+    width: 30px;  /* Pas de breedte aan naar wens */
+    height: 30px; /* Pas de hoogte aan naar wens */
+    object-fit: contain; /* Zorg ervoor dat het icoon niet vervormt */
+}
+
+/* Wanneer je over het icoon hovert */
+#rulesIconImage:hover {
+    transform: scale(1.1); /* Vergroot het icoon met 10% */
+    opacity: 0.8; /* Maak het icoon iets transparanter */
+}
+
+/* Styling voor de spelregel pop-up */
+#rulesPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9); /* Zwart met 60% opaciteit */
+    color: #ffffff;
+    padding: 30px;
+    width: 80%;
+    max-width: 500px;
+    display: none;
+    z-index: 1000;
+    line-height: 1.2;
+    backdrop-filter: blur(8px);
+}
+
+/* Verberg de pop-up standaard */
+#rulesPopup.hidden {
+    display: none;
+}
+
+/* Styling voor de sluitknop in de pop-up */
+.close-button {
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Wanneer je over het icoon hovert */
+.close-button:hover {
+    transform: scale(1.1); /* Vergroot het icoon met 10% */
+    opacity: 0.8; /* Maak het icoon iets transparanter */
+}
+
+/* Extra styling voor de header als er een pop-up open is */
+body.modal-open #rulesPopup {
+    display: block;
+}
