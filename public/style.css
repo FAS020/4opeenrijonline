@@ -8,6 +8,7 @@ body {
     padding: 0;
     height: 100vh; /* Zorgt ervoor dat de body het volledige scherm vult */
     display: flex;
+    width: 100vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -262,13 +263,24 @@ button {
 /* Responsieve styling */
 @media (max-width: 600px) {
     #gameBoard {
-        width: 80%;
+        width: 100%;
         height: auto;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+        gap: 5px;
+        aspect-ratio: 1/1;
+    }
+
+    #gameBoard tr {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 5px;
     }
 
     #gameBoard td {
-        width: 40px;
-        height: 40px;
+        width: auto;
+        height: 100%;
+        aspect-ratio: 1/1;
     }
 
     button {
