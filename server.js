@@ -155,16 +155,38 @@ function checkForWinner() {
             }
         }
     }
+
+    // Add draw check after all win conditions
+    let isDraw = true;
+    for (let col = 0; col < 8; col++) {
+        if (!board[0][col]) {
+            isDraw = false;
+            break;
+        }
+    }
+
+    if (isDraw) {
+        endGame('draw');
+        return;
+    }
 }
 
 // Eindig het spel
 function endGame(winner) {
-    if (winner === 'red') {
+    if (winner === 'draw') {
+        // Give both teams a point
         scores.red += 1;
+        scores.yellow += 1;
+        io.emit('gameOver', 'Gelijkspel');
+        console.log('Gelijkspel');
+        console.log('Scores:', scores);
+    } else if (winner === 'red') {
+        scores.red += 1;
+        io.emit('gameOver', winner);
     } else if (winner === 'yellow') {
         scores.yellow += 1;
+        io.emit('gameOver', winner);
     }
-    io.emit('gameOver', winner);
 
     gamePaused = true;
     setTimeout(() => {
