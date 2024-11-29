@@ -141,7 +141,7 @@ button {
 }
 
 /* Timer en score secties met vaste breedte */
-#timer, #scoreRed, #scoreYellow {
+#timer, #scoreRed, #scoreYellow, #countTeamRed, #countTeamYellow {
     font-size: 18px;
     margin-top: 12px;
     font-weight: bold;
@@ -156,7 +156,9 @@ button {
 /* Zorg dat cijfers altijd gecentreerd zijn */
 #timer span,
 #scoreRed span,
-#scoreYellow span {
+#scoreYellow span, 
+#countTeamYellow span, 
+#countTeamRed span {
     display: inline-block;
     text-align: center;
     min-width: 40px; /* Vaste ruimte voor cijfers */
@@ -169,11 +171,11 @@ button {
 }
 
 /* Rode en gele score kleur */
-#scoreRed {
+#scoreRed, #countTeamRed {
     color: #ffffff;
 }
 
-#scoreYellow {
+#scoreYellow, #countTeamYellow {
     color: #ffffff;
 }
 
@@ -229,7 +231,9 @@ button {
 /* Zorg dat cijfers altijd gecentreerd zijn */
 #timer span,
 #scoreRed span,
-#scoreYellow span {
+#scoreYellow span, 
+#countTeamYellow span, 
+#countTeamRed span {
     display: inline-block;
     text-align: center;
     min-width: 40px; /* Vaste ruimte voor cijfers */
@@ -252,7 +256,7 @@ button {
 }
 
 /* Rode en gele score kleur */
-#scoreRed {
+#scoreRed, #countTeamRed {
     color: #ffffff;
 }
 

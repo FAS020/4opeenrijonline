@@ -209,3 +209,10 @@ function updateVotingInfo() {
         votingInfo.textContent = "Wachten op beurt!";
     }
 }
+
+// Listen for team count updates from server
+socket.on('updateTeamCounts', (counts) => {
+    // Update the display elements with current team counts
+    document.getElementById('red-count').textContent = counts.red;
+    document.getElementById('yellow-count').textContent = counts.yellow;
+});
