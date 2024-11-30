@@ -269,21 +269,13 @@ button {
     #gameBoard {
         width: 100%;
         height: auto;
-        display: grid;
-        grid-template-rows: repeat(8, 1fr);
-        gap: 5px;
         aspect-ratio: 1/1;
     }
 
-    #gameBoard tr {
-        display: grid;
-        grid-template-columns: repeat(8, 1fr);
-        gap: 5px;
-    }
 
     #gameBoard td {
-        width: auto;
-        height: 100%;
+        width: 100%;
+        height: auto;
         aspect-ratio: 1/1;
     }
 
