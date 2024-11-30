@@ -8,6 +8,7 @@ body {
     padding: 0;
     height: 100vh; /* Zorgt ervoor dat de body het volledige scherm vult */
     display: flex;
+    width: 100vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -140,7 +141,7 @@ button {
 }
 
 /* Timer en score secties met vaste breedte */
-#timer, #scoreRed, #scoreYellow {
+#timer, #scoreRed, #scoreYellow, #countTeamRed, #countTeamYellow {
     font-size: 18px;
     margin-top: 12px;
     font-weight: bold;
@@ -155,7 +156,9 @@ button {
 /* Zorg dat cijfers altijd gecentreerd zijn */
 #timer span,
 #scoreRed span,
-#scoreYellow span {
+#scoreYellow span, 
+#countTeamYellow span, 
+#countTeamRed span {
     display: inline-block;
     text-align: center;
     min-width: 40px; /* Vaste ruimte voor cijfers */
@@ -168,11 +171,11 @@ button {
 }
 
 /* Rode en gele score kleur */
-#scoreRed {
+#scoreRed, #countTeamRed {
     color: #ffffff;
 }
 
-#scoreYellow {
+#scoreYellow, #countTeamYellow {
     color: #ffffff;
 }
 
@@ -228,7 +231,9 @@ button {
 /* Zorg dat cijfers altijd gecentreerd zijn */
 #timer span,
 #scoreRed span,
-#scoreYellow span {
+#scoreYellow span, 
+#countTeamYellow span, 
+#countTeamRed span {
     display: inline-block;
     text-align: center;
     min-width: 40px; /* Vaste ruimte voor cijfers */
@@ -251,7 +256,7 @@ button {
 }
 
 /* Rode en gele score kleur */
-#scoreRed {
+#scoreRed, #countTeamRed {
     color: #ffffff;
 }
 
@@ -262,13 +267,24 @@ button {
 /* Responsieve styling */
 @media (max-width: 600px) {
     #gameBoard {
-        width: 80%;
+        width: 100%;
         height: auto;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+        gap: 5px;
+        aspect-ratio: 1/1;
+    }
+
+    #gameBoard tr {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 5px;
     }
 
     #gameBoard td {
-        width: 40px;
-        height: 40px;
+        width: auto;
+        height: 100%;
+        aspect-ratio: 1/1;
     }
 
     button {

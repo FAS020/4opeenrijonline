@@ -15,6 +15,7 @@ let timerValue = 10; // Start timer bij 10 seconden
 let timerInterval = null; // Timer interval
 let teamTimers = { red: 10, yellow: 10 }; // Timer per team
 let gamePaused = false; // Boolean om te controleren of het spel gepauzeerd is
+let teamCounts = { red: 0, yellow: 0 }; // Aantal spelers per team
 
 // Stemmen voor de huidige beurt
 let votes = {};
@@ -154,16 +155,38 @@ function checkForWinner() {
             }
         }
     }
+
+    // Add draw check after all win conditions
+    let isDraw = true;
+    for (let col = 0; col < 8; col++) {
+        if (!board[0][col]) {
+            isDraw = false;
+            break;
+        }
+    }
+
+    if (isDraw) {
+        endGame('draw');
+        return;
+    }
 }
 
 // Eindig het spel
 function endGame(winner) {
-    if (winner === 'red') {
+    if (winner === 'draw') {
+        // Give both teams a point
         scores.red += 1;
+        scores.yellow += 1;
+        io.emit('gameOver', 'Gelijkspel');
+        console.log('Gelijkspel');
+        console.log('Scores:', scores);
+    } else if (winner === 'red') {
+        scores.red += 1;
+        io.emit('gameOver', winner);
     } else if (winner === 'yellow') {
         scores.yellow += 1;
+        io.emit('gameOver', winner);
     }
-    io.emit('gameOver', winner);
 
     gamePaused = true;
     setTimeout(() => {
@@ -189,7 +212,17 @@ io.on('connection', (socket) => {
 
     socket.on('chooseTeam', (team) => {
         console.log(`${socket.id} kiest team ${team}`);
+        
+        // Remove from old team if switching
+        if (socket.team) {
+            teamCounts[socket.team]--;
+        }
+        
         socket.team = team;
+        teamCounts[team]++;
+        
+        // Emit updated counts to all clients
+        io.emit('updateTeamCounts', teamCounts);
         startTurn();
     });
 
@@ -202,8 +235,15 @@ io.on('connection', (socket) => {
     socket.on('newGame', () => {
         resetBoard();
     });
-});
 
+    socket.on('disconnect', () => {
+        if (socket.team) {
+            teamCounts[socket.team]--;
+            io.emit('updateTeamCounts', teamCounts);
+        }
+    });
+
+});
 server.listen(3000, () => {
     console.log('Server draait op http://localhost:3000');
 });
