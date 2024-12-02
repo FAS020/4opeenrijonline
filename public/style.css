@@ -267,16 +267,28 @@ button {
 /* Responsieve styling */
 @media (max-width: 600px) {
     #gameBoard {
+        display: grid; /* Make the game board act as a grid */
         width: 100%;
         height: auto;
         aspect-ratio: 1/1;
+        grid-template-columns: repeat(8, 1fr); /* Set the layout to 8 columns */
+        grid-template-rows: repeat(8, 1fr); /* Set the layout to 8 rows */
+        box-sizing: border-box; /* Ensure padding and borders are included in the total width and height */
+        gap: .5rem; /* Add a grid gap */
     }
 
-
     #gameBoard td {
-        width: 100%;
-        height: auto;
+        display: grid; /* Make the table cells act as a grid layout */
+        width: 100%; 
+        height: 100%; /* Ensure cells fit within the game board */
         aspect-ratio: 1/1;
+        min-width: 25px;
+        min-height: 25px; /* Set height equal to width for circular shape */
+        border-radius: 50%; /* Make the td a circle */
+    }
+
+    #gameBoard tr {
+        display: contents; /* Allow the rows to not interfere with the grid layout */
     }
 
     button {
